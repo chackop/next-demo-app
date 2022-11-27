@@ -1,3 +1,3 @@
 export default function LearnReact() {
-    return(<h1>Learn ReactJS</h1>)
+  return <h1>Learn ReactJS</h1>;
 }
