@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "../styles/Layout.module.css";
 
 export default function Layout({ children }) {
   const links = [
@@ -19,17 +21,22 @@ export default function Layout({ children }) {
       path: "/sections",
     },
   ];
+  const router = useRouter();
   return (
-    <>
+    <div className={styles.container}>
       {links.map((link) => {
+        const className =
+          link.path === router.asPath ? styles.active : styles.link;
         return (
           // eslint-disable-next-line react/jsx-key
           <Link href={link.path}>
-            <a>{link.title} </a>
+            <a className={className} key={link.title}>
+              {link.title}{" "}
+            </a>
           </Link>
         );
       })}
       {children}
-    </>
+    </div>
   );
 }
